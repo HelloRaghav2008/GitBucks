@@ -43,6 +43,7 @@ kotlin {
             implementation(dependencyNotation = libs.koin.core)
             implementation(dependencyNotation = libs.bundles.ktor)
             implementation(dependencyNotation = libs.kotlinx.serialization.json)
+            implementation(dependencyNotation = libs.kotlinx.datetime)
         }
         commonTest.dependencies {
             // put your testing dependenices here

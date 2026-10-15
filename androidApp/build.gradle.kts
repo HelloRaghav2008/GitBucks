@@ -22,7 +22,8 @@ dependencies {
     implementation(dependencyNotation = libs.androidx.core.ktx)
     implementation(dependencyNotation = libs.androidx.compose.ui.text)
     implementation(dependencyNotation = libs.androidx.lifecycle.runtime.ktx)
-
+    // Koin
+    implementation(libs.bundles.koin.android)
 
     testImplementation(dependencyNotation = libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))

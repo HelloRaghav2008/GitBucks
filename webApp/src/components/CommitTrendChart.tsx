@@ -19,12 +19,13 @@ export function CommitTrendChart({ trend }: { trend: CommitActivity[] }) {
 			guides: false,
 			scales: {
 				x: {
-					scale: () => scaleBand<string>().paddingInner(0.35).paddingOuter(0.175),
+					scale: () =>
+						scaleBand<string>().paddingInner(0.35).paddingOuter(0.175),
 					axis: false,
 				},
-				y: { 
-					scale: scaleLinear().domain([0, maxCount]), 
-					axis: false 
+				y: {
+					scale: scaleLinear().domain([0, maxCount]),
+					axis: false,
 				},
 			},
 		});

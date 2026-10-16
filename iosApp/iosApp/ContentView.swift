@@ -2,27 +2,22 @@ import SwiftUI
 import Shared
 
 struct ContentView: View {
-    @State private var showContent = false
-    var body: some View {
-        VStack {
-            Button("Click me!") {
-                withAnimation {
-                    showContent = !showContent
-                }
-            }
+    @State private var viewModel: AnalyticsViewModel = AnalyticsViewModel(useCase: KoinHelper().getFullAnalyticsUseCase)
 
-            if showContent {
-                VStack(spacing: 16) {
-                    Image(systemName: "swift")
-                        .font(.system(size: 200))
-                        .foregroundColor(.accentColor)
-                    Text("SwiftUI: \(Greeting().greet())")
-                }
-                .transition(.move(edge: .top).combined(with: .opacity))
+    var body: some View {
+        Group {
+            switch viewModel.state {
+            case .idle: 
+                SearchScreen(onSearch: viewModel.search)
+            case .loading:
+                LoadingScreen()
+            case .error(let message):
+                ErrorScreen(message: message, onRetry: viewModel.retry)
+            case .success(let result):
+                AnalyticsScreen(result: result, onBack: viewModel.reset)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .padding()
+        .background(Color(.systemGroupedBackground))
     }
 }
 

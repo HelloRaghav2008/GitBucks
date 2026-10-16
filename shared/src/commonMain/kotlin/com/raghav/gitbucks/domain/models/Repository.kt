@@ -1,7 +1,7 @@
 package com.raghav.gitbucks.domain.models
 
 data class Repository(
-    val id: Int = 0,
+    val id: Long = 0,
     val name: String = "",
     val fullName: String = "",
     val description: String? = null,

@@ -3,6 +3,7 @@ package com.raghav.gitbucks.domain.use_cases
 import com.raghav.gitbucks.data.repository.AnalyticsCache
 import com.raghav.gitbucks.domain.repository.GitHubRepository
 import com.raghav.gitbucks.domain.models.AnalyticsResults
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 
@@ -14,6 +15,7 @@ class GetFullAnalyticsUseCase(
     private val scoreCalc: CalculateContributionUseCase,
     private val commitTrend: FetchCommitTrendUseCase,
 ) {
+    @Throws(Exception::class, CancellationException::class)
     suspend fun execute(userName: String): AnalyticsResults {
         cache.get(userName)?.let { return it }
         return coroutineScope {

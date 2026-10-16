@@ -49,6 +49,7 @@ kotlin {
             // put your testing dependenices here
             implementation(dependencyNotation = libs.ktor.client.mock)
             implementation(dependencyNotation = libs.koin.test)
+            implementation(libs.kotlinx.coroutines.test)
         }
         iosMain.dependencies {
             implementation(dependencyNotation = libs.ktor.client.darwin)
